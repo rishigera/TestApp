@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.digitek.homesearch.dao.PropertyDAO">
+  <select id="getProperties" resultMap="propertyResultMap">
+    select * from property
+  </select>
+
+<resultMap id="propertyResultMap" type="com.digitek.homesearch.model.Property">
+  <id property="id" column="id"/>
+  <result property="bedrooms" column="bedroom"/>
+  <result property="bathrooms" column="bathroom"/>
+  <association property="address" javaType="com.digitek.homesearch.model.Address">
+    <result property="houseNumber" column="housenumber"/>
+    <result property="street" column="street"/>
+    <result property="unitNumber" column="unitnumber"/>
+    <result property="city" column="city"/>
+    <result property="postalCode" column="postalcode"/>
+  </association>
+</resultMap>
+</mapper>
+
